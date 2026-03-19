@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capacitación para Evangelistas - Fundamentos del Evangelismo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #2c3e50;
+        --accent: #3498db;
+        --highlight: #e74c3c;
+        --success: #27ae60;
+        --warning: #f39c12;
+        --text-dark: #333;
+        --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        --hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 130px; /* Evita que la barra fija tape el contenido al volver */
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        /* Añadimos padding-top para evitar que el nav fijo oculte el contenido */
+        padding-top: 90px;
+        background-color: #ecf0f1;
+        background-image: var(--bg-gradient);
+        background-attachment: fixed;
+        color: var(--text-dark);
+      }
+      .container {
+        max-width: 1100px;
+        margin: 20px auto;
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: var(--card-shadow);
+        position: relative;
+        overflow: hidden;
+      }
+      /* Decoración superior del container */
+      .container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          var(--accent),
+          var(--success),
+          var(--warning)
+        );
+      }
+
+      /* --- Estilos para la Barra de Navegación --- */
+      nav {
+        background-color: var(--primary); /* Color sólido inicial */
+        /* backdrop-filter se aplicará al hacer scroll */
+        color: white;
+        padding: 1.2rem 0; /* Un poco más alto al inicio */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: none; /* Sin sombra al inicio */
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s ease; /* Transición suave para todos los cambios */
+      }
+      /* Clase que añadiremos con JS al bajar */
+      nav.scrolled {
+        background-color: rgba(44, 62, 80, 0.9);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0; /* Se hace más compacta */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+      }
+      nav ul li {
+        display: inline-block;
+        margin: 0 10px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 8px 16px;
+        border-radius: 30px;
+        transition: background-color 0.3s ease;
+        font-family: "Montserrat", sans-serif;
+        letter-spacing: 0.5px;
+      }
+      nav ul li a:hover,
+      nav ul li a:focus {
+        background-color: var(--accent);
+        box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4);
+      }
+      h1,
+      h2,
+      h3 {
+        color: var(--primary);
+        font-family: "Montserrat", sans-serif;
+      }
+      h1 {
+        text-align: center;
+        color: var(--primary);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 15px;
+        border-bottom: none;
+        position: relative;
+      }
+      h1::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 5px;
+        background: var(--accent);
+        margin: 15px auto 0;
+        border-radius: 3px;
+      }
+      h2 {
+        background: linear-gradient(to right, #ecf0f1, rgba(255, 255, 255, 0));
+        padding: 15px 20px;
+        border-radius: 8px;
+        border-left: 5px solid var(--primary);
+        margin-top: 40px;
+        font-size: 1.8rem;
+      }
+      .section {
+        margin-bottom: 60px;
+      }
+      ul,
+      ol {
+        padding-left: 25px;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+      .versiculos {
+        background: #fdfdfd;
+        padding: 25px;
+        border-left: 5px solid var(--accent);
+        margin: 15px 0;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.08);
+        transition: transform 0.2s ease;
+      }
+      .versiculos:hover {
+        transform: translateX(5px);
+      }
+      .ejemplos {
+        background: #fdfdfd;
+        padding: 25px;
+        border-left: 5px solid var(--success);
+        margin: 15px 0;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(39, 174, 96, 0.08);
+      }
+      .dinamica {
+        background: white;
+        padding: 25px;
+        border-top: 5px solid var(--warning);
+        border-left: none; /* Reset */
+        margin: 0; /* Controlado por grid gap */
+        border-radius: 12px;
+        position: relative;
+      }
+      .dinamicas-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 25px;
+      }
+      .dinamica {
+        transition:
+          transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          box-shadow 0.3s ease;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+      }
+      .dinamica:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--hover-shadow);
+      }
+      .dinamica strong {
+        display: block;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        color: var(--primary);
+      }
+
+      .duracion {
+        display: inline-block;
+        font-weight: bold;
+        color: white;
+        background-color: var(--highlight);
+        padding: 3px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        margin-bottom: 10px;
+      }
+      footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 40px;
+        background: var(--primary);
+        color: rgba(255, 255, 255, 0.8);
+        border-radius: 12px;
+        font-size: 1em;
+      }
+
+      .intro-text {
+        text-align: center;
+        font-style: italic;
+        font-size: 1.5rem;
+        color: #555;
+        max-width: 800px;
+        margin: 0 auto 40px;
+      }
+
+      .versiculos-content {
+        font-size: 1.1em;
+        text-align: justify;
+      }
+
+      .ejemplos-content {
+        font-size: 1.1em;
+        text-align: justify;
+      }
+
+      .keyword-highlight {
+        color: #0c08fa;
+        font-weight: bold;
+        font-size: 18pt;
+      }
+
+      .verse-ref {
+        color: #1a5276;
+        font-weight: bold;
+      }
+
+      .link-destacado {
+        color: var(--accent);
+        font-weight: bold;
+        text-decoration: none;
+        border-bottom: 1px solid currentColor;
+        transition: color 0.3s ease;
+      }
+      .link-destacado:hover {
+        color: var(--highlight);
+      }
+      .link-destacado::after {
+        display: inline-block;
+        content: "";
+        width: 0.85em;
+        height: 0.85em;
+        margin-left: 4px;
+        vertical-align: middle;
+        background-color: currentColor;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 6v2h8.59L6 20.59 7.41 22 20 9.41V18h2V6z'/%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10 6v2h8.59L6 20.59 7.41 22 20 9.41V18h2V6z'/%3E%3C/svg%3E");
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        transition: transform 0.3s ease;
+      }
+      .link-destacado:hover::after {
+        transform: translate(2px, -2px);
+      }
+
+      /* --- Clases para Animación de Entrada --- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px); /* Empieza 30px más abajo */
+        transition: all 0.8s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* --- Animación de Resaltado para el ancla --- */
+      @keyframes highlight-pulse {
+        0% {
+          background-color: transparent;
+        }
+        25% {
+          background-color: rgba(241, 196, 15, 0.6);
+          box-shadow: 0 0 10px rgba(241, 196, 15, 0.4);
+          transform: scale(1.02);
+        }
+        100% {
+          background-color: transparent;
+          transform: scale(1);
+        }
+      }
+      .highlight-effect {
+        animation: highlight-pulse 2s ease-out;
+        border-radius: 4px;
+        display: inline-block;
+      }
+
+      /* --- Estilos para la Ventana Modal --- */
+      .modal {
+        display: none; /* Oculto por defecto */
+        position: fixed; 
+        z-index: 2000; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgba(0,0,0,0.5); /* Fondo negro semitransparente */
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px); /* Efecto borroso de fondo incrementado */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .modal.show {
+        display: block;
+        opacity: 1;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto; /* 5% desde arriba y centrado */
+        padding: 30px;
+        border: 1px solid #888;
+        width: 90%; 
+        max-width: 700px;
+        border-radius: 15px;
+        box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        position: relative;
+        transform: translateY(-30px);
+        transition: transform 0.3s ease;
+      }
+
+      .modal.show .modal-content {
+        transform: translateY(0);
+      }
+
+      .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.2s;
+        line-height: 1;
+      }
+
+      .close-btn:hover,
+      .close-btn:focus {
+        color: var(--highlight);
+        text-decoration: none;
+      }
+
+      .btn-cerrar-modal {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 20px;
+        transition: all 0.3s ease-in-out;
+      }
+      .btn-cerrar-modal:hover {
+        background-color: var(--highlight);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        opacity: 0.9;
+      }
+
+      /* --- Media Queries para Responsividad --- */
+      @media (max-width: 768px) {
+        body {
+          padding-top: 120px;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        nav ul {
+          display: flex;
+          flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+          justify-content: center;
+          padding: 10px;
+        }
+        nav ul li {
+          margin: 5px 3px;
+        }
+        nav ul li a {
+          font-size: 0.85rem;
+          padding: 6px 12px;
+        }
+        h1 {
+          font-size: 1.8rem;
+        }
+        .container {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#amor">1. Amor de Dios</a></li>
+        <li><a href="#condicion">2. Condición Humana</a></li>
+        <li><a href="#salvador">3. Jesús Salvador</a></li>
+        <li><a href="#respuesta">4. Arrepentimiento</a></li>
+        <li><a href="#dinamicas">Dinámicas</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <h1>Capacitación para Evangelistas<br />Fundamentos del Evangelismo</h1>
+
+      <p
+        style="
+          text-align: center;
+          font-style: italic;
+          font-size: 1.5rem;
+          color: #555;
+          max-width: 800px;
+          margin: 0 auto 40px;
+        "
+      >
+        El amor de Dios, la condición humana, Jesucristo como único Salvador y
+        la respuesta de arrepentimiento, conversión y bautismo en el nombre de
+        Jesús.
+      </p>
+
+      <div class="section" id="amor">
+        <h2>1. El amor de Dios por la humanidad</h2>
+
+        <div class="versiculos" style="font-size: 1.1em; text-align: justify">
+          <strong>
+            <span style="font-size: 1.2em; color: var(--primary)">
+              Versículos clave:
+            </span> </strong
+          ><br /><br />
+
+          ✔️ <span style="color: #1a5276; font-weight: bold">Juan 3:16</span
+          ><br />
+          Porque de tal manera
+          <span style="color: #0c08fa; font-weight: bold; font-size: 18pt"
+            >amó</span
+          >
+          Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel
+          que en él cree, no se pierda, mas tenga vida eterna.<br /><br />
+
+          ✔️ <span style="color: #1a5276; font-weight: bold">Romanos 5:8</span
+          ><br />
+          Mas Dios muestra su
+          <span style="color: #0c08fa; font-weight: bold; font-size: 18pt"
+            >amor</span
+          >
+          para con nosotros, en que siendo aún pecadores, Cristo murió por
+          nosotros. <br /><br />
+          ✔️
+          <span style="color: #1a5276; font-weight: bold">1 Juan 4:9-10</span>
+          <br />
+          En esto se mostró el
+          <span style="color: #0c08fa; font-weight: bold; font-size: 18pt"
+            >amor</span
+          >
+          de Dios para con nosotros, en que Dios envió a su Hijo unigénito al
+          mundo, para que vivamos por él. En esto consiste el
+          <span style="color: #0c08fa; font-weight: bold; font-size: 18pt"
+            >amor</span
+          >: no en que nosotros hayamos amado a Dios, sino en que él nos
+          <span style="color: #0c08fa; font-weight: bold; font-size: 18pt"
+            >amó</span
+          >
+          a nosotros, y envió a su Hijo en propiciación por nuestros pecados.<br /><br />
+          ✔️
+          <span style="color: #1a5276; font-weight: bold">Efesios 2:4-5</span>
+          <br />
+          Pero Dios, que es rico en misericordia, por su gran
+          <span style="color: #0c08fa; font-weight: bold; font-size: 18pt"
+            >amor</span
+          >
+          con que nos
+          <span style="color: #0c08fa; font-weight: bold; font-size: 18pt"
+            >amó</span
+          >, aun estando nosotros muertos en pecados, nos dio vida juntamente
+          con Cristo (por gracia sois salvos),<br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">1 Juan 3:1</span>
+          <br />
+          Mirad cuál<span
+            style="color: #0c08fa; font-weight: bold; font-size: 18pt"
+          >
+            amor</span
+          >
+          nos ha dado el Padre, para que seamos llamados hijos de Dios; por esto
+          el mundo no nos conoce, porque no le conoció a él.
+        </div>
+
+        <div class="ejemplos" style="font-size: 1.1em; text-align: justify">
+          <strong>Ejemplos prácticos:</strong><br />
+          👉🏼 "Imagina que tienes un hijo único y lo entregas para salvar a
+          alguien que ni siquiera te conoce..."<br />
+          👉🏼 "¿Sabías que Dios te ama tanto que dio lo más valioso por ti?"<br />
+          👉🏼 Analogía del padre en el incendio (sombra del amor de Dios).<a href="Analogia incendio.html" style="font-size: small;" class="link-destacado" title="Clic para ver analogía completa"> Ver más</a>
+        </div>
+      </div>
+
+      <div class="section" id="condicion">
+        <h2>2. La condición de la humanidad</h2>
+
+        <div class="versiculos">
+          <strong>Versículos clave:</strong><br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Romanos 3:23</span>
+          <br />
+          por cuanto todos <b> pecaron</b>, y están <b>destituidos</b> de la
+          gloria de Dios,.<br /><br />
+          ✔️
+          <span style="color: #1a5276; font-weight: bold">Romanos 6:23</span
+          ><br />
+          Porque la paga del <b>pecado</b> es muerte, mas la dádiva de Dios es
+          vida eterna en Cristo Jesús Señor nuestro.<br /><br />
+          ✔️
+          <span style="color: #1a5276; font-weight: bold">Efesios 2:1-3</span>
+          <br />
+          Y él os dio vida a vosotros, cuando estabais
+          <b>muertos en vuestros delitos y pecados</b>, en los cuales
+          anduvisteis en otro tiempo, siguiendo la corriente de este mundo,
+          conforme al príncipe de la potestad del aire, el espíritu que ahora
+          opera en los hijos de desobediencia, entre los cuales también todos
+          nosotros vivimos en otro tiempo en los <b>deseos de nuestra carne</b>,
+          haciendo la voluntad de la carne y de los pensamientos, y éramos por
+          naturaleza <b>hijos de ira</b>, lo mismo que los demás.<br /><br />
+          ✔️
+          <span style="color: #1a5276; font-weight: bold">Isaías 59:2</span
+          ><br />
+          pero vuestras <b>iniquidades</b> han hecho división entre vosotros y
+          vuestro Dios, y vuestros <b>pecados</b> han hecho ocultar de vosotros
+          su rostro para no oír.<br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">1 Juan 1:8</span>
+          <br />
+          Si decimos que no tenemos <b>pecado</b>, nos engañamos a nosotros
+          mismos, y la verdad no está en nosotros.
+        </div>
+
+        <div class="ejemplos">
+          <strong>Ejemplos prácticos:</strong><br />
+          👉🏼 Mentiras, envidia, ira: todos hemos caído en esto.<br />
+          👉🏼 Analogía del virus en el celular. <span id="analogia-celular"><a href="Analogia virus.html" style="font-size: small;" class="link-destacado"> Ver más</a></span
+          ><br />
+          👉🏼 Pregunta: "¿Has sentido un vacío que nada llena?"
+        </div>
+      </div>
+
+      <div class="section" id="salvador">
+        <h2>3. Jesucristo, el único Salvador</h2>
+
+        <div class="versiculos">
+          <strong>Versículos clave:</strong><br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Romanos 10:9</span
+          ><br />
+          Si confiesas con la boca que Jesús es el Señor, y crees en el corazón
+          que Dios lo resucitó de los muertos, serás salvo.<br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Juan 14:6</span
+          ><br />
+          Jesús le dijo: Yo soy el camino, y la verdad, y la vida; nadie viene
+          al Padre, sino por mí.<br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Hechos 4:12</span>
+          <br />
+          Y en ningún otro hay salvación; porque no hay otro nombre bajo el
+          cielo, dado a los hombres, en que podamos ser salvos.<br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Mateo 1:21</span>
+          <br />
+          Y dará a luz un hijo, y llamarás su nombre <b>JESÚS</b>, porque él
+          salvará a su pueblo de sus pecados.<br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Lucas 19:10</span>
+          <br />
+          Porque el Hijo del Hombre vino a buscar y a salvar lo que se había
+          perdido.
+        </div>
+
+        <div class="ejemplos">
+          <strong>Ejemplos prácticos:</strong><br />
+          👉🏼
+          <span id="analogia-puente"
+            >Analogía del puente roto: solo Jesús lo reconstruye.</span
+          ><a href="Analogia puente.html" style="font-size: small;" class="link-destacado" title="Analogía del puente"> Ver más</a><br />
+          👉🏼 "Jesús no es una opción entre muchas; es el único."<br />
+          👉🏼 Testimonio personal: "Solo en Él encontré paz real."
+        </div>
+      </div>
+
+      <div class="section" id="respuesta">
+        <h2>
+          4. La necesidad del arrepentimiento, conversión y bautismo en agua en
+          el nombre de Jesús
+        </h2>
+
+        <div class="versiculos">
+          <strong>Versículos clave:</strong><br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Marcos 1:15</span
+          ><br />
+          El tiempo se ha cumplido, y el reino de Dios se ha acercado;
+          arrepentíos, y creed en el evangelio.<br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Hechos 2:38</span
+          ><br />
+          Arrepentíos, y bautícese cada uno de vosotros en el nombre de Jesus
+          Cristo para perdón de los pecados; y recibiréis el don del Espíritu
+          Santo.<br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Hechos 3:19</span
+          ><br />
+          Así que, arrepentíos y convertíos, para que sean borrados vuestros
+          pecados; para que vengan de la presencia del Señor tiempos de
+          refrigerio,<br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Romanos 6:3-4</span
+          ><br />
+          ¿O no sabéis que todos los que hemos sido bautizados en Cristo Jesús,
+          hemos sido <b>bautizados en su muerte</b>? Porque somos sepultados
+          juntamente con él para muerte por el bautismo, a fin de que como
+          Cristo resucitó de los muertos por la gloria del Padre, así también
+          nosotros andemos en vida nueva.<br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Hechos 22:16</span
+          ><br />
+          Ahora, pues, ¿por qué te detienes? Levántate y bautízate, y lava tus pecados, invocando su nombre.<br /><br />
+          ✔️ <span style="color: #1a5276; font-weight: bold">Lucas 24:47</span
+          ><br />
+          y que se predicase en su nombre el arrepentimiento y el perdón de pecados en todas las naciones, comenzando desde Jerusalén.
+        </div>
+
+        <div class="ejemplos">
+          <strong>Ejemplos prácticos:</strong><br />
+          👉🏼 Arrepentimiento = giro de 180°.<br />
+          👉🏼 Bautismo = declaración pública como una boda.<br />
+          👉🏼 Llamado: "¿Estás dispuesto a arrepentirte y bautizarte hoy?"
+        </div>
+      </div>
+
+      <div class="section" id="dinamicas">
+        <h2>Dinámicas Interactivas</h2>
+
+        <div class="dinamicas-grid">
+          <!-- Dinámica 1 con disparador de Modal -->
+          <div class="dinamica" onclick="abrirModal('modalRegalo')" style="cursor: pointer;" title="Clic para ver detalles">
+            <strong>1. El regalo inmerecido</strong>
+            <span class="duracion">(15-20 min)</span><br />
+            Dar y recibir "regalos" inmerecidos explicando el amor de Dios. <span style="font-size: 0.8em; color: var(--accent);">[Ver detalle 👆]</span>
+          </div>
+
+          <div class="dinamica" onclick="abrirModal('modalVirus')" style="cursor: pointer;" title="Clic para ver detalles">
+            <strong>2. El virus invisible</strong>
+            <span class="duracion">(15-20 min)</span><br />
+            Globo con pecados escritos → pinchar para mostrar vacío. <span style="font-size: 0.8em; color: var(--accent);">[Ver detalle 👆]</span>
+          </div>
+
+          <div class="dinamica" onclick="abrirModal('modalPuente')" style="cursor: pointer;" title="Clic para ver detalles">
+            <strong>3. El único puente</strong>
+            <span class="duracion">(20-25 min)</span><br />
+            Cruzar de "humanidad" a "Dios" solo por Jesús. <span style="font-size: 0.8em; color: var(--accent);">[Ver detalle 👆]</span>
+          </div>
+
+          <div class="dinamica" onclick="abrirModal('modalGiro')" style="cursor: pointer;" title="Clic para ver detalles">
+            <strong>4. Giro de 180°</strong>
+            <span class="duracion">(15-20 min)</span><br />
+            Caminar en círculo → girar al grito "¡Arrepiéntete!". <span style="font-size: 0.8em; color: var(--accent);">[Ver detalle 👆]</span>
+          </div>
+
+          <div class="dinamica" onclick="abrirModal('modalRoleplay')" style="cursor: pointer;" title="Clic para ver detalles">
+            <strong>5. Role-playing completo</strong>
+            <span class="duracion">(20-30 min)</span><br />
+            Practicar compartir los 4 puntos con objeciones. <span style="font-size: 0.8em; color: var(--accent);">[Ver detalle 👆]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VENTANA MODAL: DINÁMICA 1 -->
+      <div id="modalRegalo" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="cerrarModal('modalRegalo')">&times;</span>
+          
+          <h2 style="margin-top: 0; border-left: none; padding-left: 0;">🎁 1. El regalo inmerecido</h2>
+          <span class="duracion" style="margin-bottom: 20px;">15-20 min</span>
+          
+          <p><strong>Enfocada en:</strong> El amor de Dios por la humanidad (punto 1).</p>
+          
+          <p><strong>Objetivo:</strong> Experimentar en carne propia lo que significa recibir un amor y un regalo que no merecemos, para luego transmitir ese amor al evangelizar.</p>
+          
+          <div class="ejemplos" style="border-left-color: var(--accent);">
+            <strong>Materiales:</strong> Tarjetas o papeles pequeños con "regalos" escritos (ej.: "perdón total", "vida eterna", "paz verdadera", "un abrazo de Dios", "Jesús mismo"). Opcional: dulces o pequeños objetos reales.
+          </div>
+
+          <h3>Desarrollo paso a paso:</h3>
+          <ul>
+            <li>Cada participante recibe una tarjeta (el facilitador la entrega en secreto o al azar).</li>
+            <li>En parejas, uno "da" el regalo al otro diciendo: <em>"Dios te ama tanto que te regala esto inmerecidamente, porque incluso siendo pecador, Él dio a Su Hijo por ti"</em> (citar <strong>Juan 3:16</strong> o <strong>Romanos 5:8</strong>).</li>
+            <li>El receptor pregunta: <em>"¿Por qué merezco esto?"</em><br>Respuesta: <em>"No lo mereces, es gracia: regalo inmerecido de Dios (<strong>Efesios 2:8-9</strong>)"</em>.</li>
+            <li>Cambian roles para que ambos experimenten dar y recibir.</li>
+            <li>Al final, todos comparten cómo se sintieron recibiendo algo no merecido.</li>
+          </ul>
+
+          <div class="dinamica" style="border-top: none; border-left: 5px solid var(--warning); background-color: #fffaf0;">
+            <strong>Reflexión:</strong>
+            "¿Cómo se sintió recibir algo sin merecerlo? Así es el evangelio: Dios inicia con amor incondicional. En la calle, empieza siempre mostrando esto antes de hablar de pecado".
+          </div>
+
+          <p style="margin-top: 20px;"><strong>Aplicación práctica:</strong> Usa esta dinámica para abrir conversaciones: <em>"Dios tiene un regalo inmerecido para ti... ¿quieres saber cuál es?"</em>.</p>
+          <div style="text-align: center;">
+            <button class="btn-cerrar-modal" onclick="cerrarModal('modalRegalo')">Cerrar Ventana</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VENTANA MODAL: DINÁMICA 2 -->
+      <div id="modalVirus" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="cerrarModal('modalVirus')">&times;</span>
+          
+          <h2 style="margin-top: 0; border-left: none; padding-left: 0;">🦠 2. El virus invisible</h2>
+          <span class="duracion" style="margin-bottom: 20px;">15-20 min</span>
+          
+          <p><strong>Enfocada en:</strong> La condición de la humanidad (punto 2).</p>
+          <p><strong>Objetivo:</strong> Visualizar cómo el pecado entra sigiloso y afecta toda la vida, creando empatía y urgencia para la solución en Jesús.</p>
+          
+          <div class="ejemplos" style="border-left-color: var(--accent);">
+            <strong>Materiales:</strong> Globos inflados (uno por grupo de 4-5 personas), marcadores permanentes.
+          </div>
+
+          <h3>Desarrollo paso a paso:</h3>
+          <ul>
+            <li>En grupos pequeños, inflan un globo y escriben alrededor "pecados comunes" (mentira, envidia, ira, egoísmo, impureza, etc.) — basados en <strong>Romanos 3:23; Efesios 2:1-3</strong>.</li>
+            <li>Uno sostiene el globo: <em>"Este es mi corazón 'infectado' por el pecado: parece normal por fuera, pero el virus está adentro"</em>.</li>
+            <li>Pinchan ligeramente (sin reventar) para mostrar cómo "se desinfla" la vida: pierde paz, relaciones se rompen, vacío interior.</li>
+            <li><strong>Discusión:</strong> "¿Qué intentos fallidos hacemos para 'limpiar' (buenas obras, resoluciones)? ¿Por qué no funcionan?".</li>
+          </ul>
+
+          <div class="dinamica" style="border-top: none; border-left: 5px solid var(--warning); background-color: #fffaf0;">
+            <strong>Reflexión:</strong>
+            "El pecado es como un virus: entra discreto, corrompe todo y lleva a la muerte espiritual (<strong>Romanos 6:23</strong>). Solo Jesús limpia de raíz".
+          </div>
+
+          <p style="margin-top: 20px;"><strong>Aplicación práctica:</strong> En evangelismo, pregunta: <em>"¿Tu vida se siente 'lenta' o vacía a veces? Eso es el 'virus' del pecado... pero hay solución"</em>.</p>
+          <div style="text-align: center;">
+            <button class="btn-cerrar-modal" onclick="cerrarModal('modalVirus')">Cerrar Ventana</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VENTANA MODAL: DINÁMICA 3 -->
+      <div id="modalPuente" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="cerrarModal('modalPuente')">&times;</span>
+          
+          <h2 style="margin-top: 0; border-left: none; padding-left: 0;">🌉 3. El único puente</h2>
+          <span class="duracion" style="margin-bottom: 20px;">20-25 min</span>
+          
+          <p><strong>Enfocada en:</strong> Jesucristo, el único Salvador (punto 3).</p>
+          <p><strong>Objetivo:</strong> Demostrar visualmente la separación por el pecado y cómo solo Jesús es el puente exclusivo para llegar a Dios.</p>
+          
+          <div class="ejemplos" style="border-left-color: var(--accent);">
+            <strong>Materiales:</strong> Cuerdas, cintas o sillas para dividir el salón en dos lados ("orilla de la humanidad" y "orilla de Dios"). Una Biblia o cuerda intacta como "puente".
+          </div>
+
+          <h3>Desarrollo paso a paso:</h3>
+          <ul>
+            <li>Divide el grupo: un lado es "humanidad" (pecadores separados), el otro "Dios" (santo y perfecto).</li>
+            <li>Intentan cruzar con "puentes rotos" (cuerdas sueltas, tablones imaginarios): fallan — representan buenas obras, religiones, moralidad (<strong>Efesios 2:8-9</strong>).</li>
+            <li>Alguien trae la Biblia (Jesús) y la coloca como puente completo.</li>
+            <li>Cruzan uno a uno diciendo: <em>"Solo por Jesús vengo al Padre"</em> (<strong>Juan 14:6; Hechos 4:12</strong>).</li>
+          </ul>
+
+          <div class="dinamica" style="border-top: none; border-left: 5px solid var(--warning); background-color: #fffaf0;">
+            <strong>Reflexión:</strong>
+            "¿Por qué fallan los otros puentes? Porque el abismo es infinito (pecado vs. santidad de Dios). Jesús no envía materiales: ¡Él es el puente vivo!".
+          </div>
+
+          <p style="margin-top: 20px;"><strong>Aplicación práctica:</strong> En conversaciones: <em>"Imagina un río profundo entre tú y Dios... Jesús se hizo el puente. ¿Quieres cruzarlo hoy?"</em>.</p>
+          <div style="text-align: center;">
+            <button class="btn-cerrar-modal" onclick="cerrarModal('modalPuente')">Cerrar Ventana</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VENTANA MODAL: DINÁMICA 4 -->
+      <div id="modalGiro" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="cerrarModal('modalGiro')">&times;</span>
+          
+          <h2 style="margin-top: 0; border-left: none; padding-left: 0;">🔄 4. Giro de 180°</h2>
+          <span class="duracion" style="margin-bottom: 20px;">15-20 min</span>
+          
+          <p><strong>Enfocada en:</strong> La necesidad del arrepentimiento y conversión (punto 4).</p>
+          <p><strong>Objetivo:</strong> Experimentar físicamente qué significa arrepentirse: un cambio total de dirección en la vida.</p>
+          
+          <div class="ejemplos" style="border-left-color: var(--accent);">
+            <strong>Materiales:</strong> Ninguno especial (solo espacio para moverse).
+          </div>
+
+          <h3>Desarrollo paso a paso:</h3>
+          <ul>
+            <li>Todos caminan en círculo en una dirección: representa "vida en pecado, rumbo al precipicio".</li>
+            <li>Al grito del facilitador <em>"¡Arrepiéntete!"</em> (<strong>Hechos 3:19</strong>), todos giran 180° y caminan al revés (hacia Dios).</li>
+            <li>Añadir resistencia: algunos se resisten al giro (como en la vida real: orgullo, hábitos).</li>
+            <li>Simular bautismo: al final, gesto de "sumergirse" y "resucitar" (<strong>Romanos 6:3-4</strong>).</li>
+          </ul>
+
+          <div class="dinamica" style="border-top: none; border-left: 5px solid var(--warning); background-color: #fffaf0;">
+            <strong>Reflexión:</strong>
+            "¿Fue fácil girar? ¿Qué resistencias hay en la vida real al arrepentirse? Arrepentimiento no es solo tristeza: es cambio de mente y dirección".
+          </div>
+
+          <p style="margin-top: 20px;"><strong>Aplicación práctica:</strong> Llama al arrepentimiento: <em>"Hoy puedes dar ese giro de 180° y volverte a Dios... ¿estás listo?"</em>.</p>
+          <div style="text-align: center;">
+            <button class="btn-cerrar-modal" onclick="cerrarModal('modalGiro')">Cerrar Ventana</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VENTANA MODAL: DINÁMICA 5 -->
+      <div id="modalRoleplay" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="cerrarModal('modalRoleplay')">&times;</span>
+          
+          <h2 style="margin-top: 0; border-left: none; padding-left: 0;">🗣️ 5. Role-playing completo del evangelio</h2>
+          <span class="duracion" style="margin-bottom: 20px;">20-30 min</span>
+          
+          <p><strong>Enfocada en:</strong> Todos los puntos (integración total).</p>
+          <p><strong>Objetivo:</strong> Practicar compartir los 4 fundamentos en una conversación real, manejando objeciones comunes.</p>
+          
+          <div class="ejemplos" style="border-left-color: var(--accent);">
+            <strong>Materiales:</strong> Ninguno (solo parejas o tríos).
+          </div>
+
+          <h3>Desarrollo paso a paso:</h3>
+          <ul>
+            <li>En parejas o tríos: uno es evangelista, otro "no creyente" (con objeciones: "Soy bueno", "Hay muchos caminos", "Ya lo intenté", etc.). <br><a href="Objeciones.html" class="link-destacado" style="font-size: 0.9em; margin-top: 5px; display: inline-block;">👉 Ver guía de respuestas a objeciones</a></li>
+            <li>El evangelista debe cubrir en orden: amor de Dios → condición humana → Jesús único → respuesta (arrepentimiento + bautismo en el nombre de Jesús).</li>
+            <li>Rotan roles cada 4-5 minutos.</li>
+            <li><strong>Facilitador:</strong> da retroalimentación: ¿Empezó con amor? ¿Fue claro con <strong>Hechos 2:38</strong>? ¿Manejó objeciones con gracia?</li>
+          </ul>
+
+          <div class="dinamica" style="border-top: none; border-left: 5px solid var(--warning); background-color: #fffaf0;">
+            <strong>Reflexión:</strong>
+            "¿Qué fue lo más difícil? ¿Cómo mejorar? Recuerda: no convertimos, proclamamos; el Espíritu convence".
+          </div>
+
+          <p style="margin-top: 20px;"><strong>Aplicación práctica:</strong> <em>"Esta semana, usa esto en una conversación real: empieza con amor, sé honesto con el pecado, presenta a Jesús y llama a la respuesta"</em>.</p>
+          <div style="text-align: center;">
+            <button class="btn-cerrar-modal" onclick="cerrarModal('modalRoleplay')">Cerrar Ventana</button>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        Preparado para equipar evangelistas con verdad bíblica y herramientas
+        prácticas.<br />
+        ¡Que el Señor use grandemente esta capacitación! 🔥
+      </footer>
+    </div>
+
+    <script>
+      // --- Lógica para las Ventanas Modales ---
+      function abrirModal(id) {
+        const modal = document.getElementById(id);
+        modal.style.display = "block";
+        // Pequeño retraso para permitir que la transición CSS funcione
+        setTimeout(() => {
+          modal.classList.add("show");
+        }, 10);
+      }
+
+      function cerrarModal(id) {
+        const modal = document.getElementById(id);
+        modal.classList.remove("show");
+        // Esperar a que termine la animación antes de ocultar
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 300);
+      }
+
+      // Cerrar modal al hacer clic fuera del contenido
+      window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+          cerrarModal(event.target.id);
+        }
+      }
+
+      // Cerrar modal al presionar la tecla Escape
+      window.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          const openModal = document.querySelector('.modal.show');
+          if (openModal) {
+            cerrarModal(openModal.id);
+          }
+        }
+      });
+
+      // 1. Lógica para la Barra de Navegación
+      const nav = document.querySelector("nav");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          nav.classList.add("scrolled");
+        } else {
+          nav.classList.remove("scrolled");
+        }
+      });
+
+      // 2. Lógica para Animaciones al hacer Scroll (Intersection Observer)
+      // Seleccionamos los elementos que queremos animar
+      const revealElements = document.querySelectorAll(
+        ".versiculos, .ejemplos, .dinamica, h2",
+      );
+
+      // Configuramos el observador
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              // Opcional: dejar de observar una vez animado para mejor rendimiento
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          rootMargin: "0px 0px -50px 0px", // Activa la animación un poco antes de que el elemento suba del todo
+          threshold: 0.15, // 15% del elemento visible para activarse
+        },
+      );
+
+      // Añadimos la clase base y observamos cada elemento
+      revealElements.forEach((el) => {
+        el.classList.add("reveal");
+        revealObserver.observe(el);
+      });
+
+      // 3. Forzar scroll suave al cargar la página desde un enlace con ancla (#)
+      window.addEventListener("load", () => {
+        if (window.location.hash) {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            window.scrollTo(0, 0); // Resetea la posición arriba inmediatamente
+            setTimeout(() => {
+              target.scrollIntoView({ behavior: "smooth" });
+              target.classList.add("highlight-effect"); // Activa el parpadeo
+            }, 150);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

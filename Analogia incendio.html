@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analogía del Padre en el Incendio - El Amor de Dios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --highlight: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --text-dark: #333;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding-top: 110px;
+            padding-bottom: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+            background-color: #ecf0f1;
+            background-image: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--highlight), var(--warning), var(--primary));
+        }
+
+        nav {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.2rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background-color: rgba(44, 62, 80, 0.9);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        nav ul li a:hover {
+            background-color: var(--highlight); /* Rojo para resaltar el amor/sacrificio */
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        h2 {
+            margin-top: 40px;
+            font-size: 1.5rem;
+            border-left: 5px solid var(--highlight);
+            padding-left: 15px;
+        }
+
+        blockquote {
+            background: #fff5f5; /* Tono rojizo suave */
+            padding: 20px 25px;
+            border-left: 5px solid var(--highlight);
+            margin: 20px 0;
+            border-radius: 8px;
+            font-style: normal;
+            color: #444;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.08);
+            font-weight: 500;
+        }
+        
+        .dialog {
+            background: #f9fff9;
+            padding: 25px;
+            border-left: 5px solid var(--success);
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.08);
+        }
+        .dialog p { 
+            margin-bottom: 10px;
+        }
+        .dialog strong {
+            color: var(--success);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index .html#amor">⬅ Volver al Curso</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Analogía del Padre en el Incendio</h1>
+        <p style="text-align: center; font-style: italic; color: #666;">Una ilustración poderosa para entender Juan 3:16 y el costo real del amor de Dios.</p>
+
+        <h2>1. La Escena: Atrapados sin salida</h2>
+        <p>Imagina un edificio enorme envuelto en llamas. Tú y yo (representando a la humanidad) estamos atrapados en el último piso. El fuego sube rápido, el humo nos asfixia y no hay escaleras de emergencia. Estamos condenados; no hay forma humana de salvarnos.</p>
+        
+        <h2>2. El Dilema del Rescatista</h2>
+        <p>Abajo está el Jefe de Rescate (Dios). Él te ama y quiere salvarte desesperadamente. Pero la única manera de sacarte es que alguien suba, atraviese las llamas más intensas y abra la puerta blindada desde afuera.</p>
+        <p>El problema es terrible: <strong>Quien suba a abrir esa puerta, morirá consumido por el fuego.</strong></p>
+        <p>El Jefe mira a su equipo: nadie califica. Entonces mira a su propio Hijo, el único capaz de llegar. El Padre se enfrenta a una decisión imposible: ver morir a las personas en el edificio o enviar a su Hijo amado a morir para salvarlos.</p>
+
+        <h2>3. El Sacrificio de Amor</h2>
+        <p>Porque el Padre te ama tanto a ti (que estás en el edificio), decide enviar a su Hijo. El Hijo sube voluntariamente, atraviesa el infierno de llamas, recibe todo el castigo del fuego en su propio cuerpo, y abre la puerta para que tú salgas libre.</p>
+        <p>Tú sales ileso, respiras aire fresco... pero cuando miras atrás, ves que el Hijo quedó atrapado y murió para que tú vivieras.</p>
+
+        <blockquote>
+            Juan 3:16 — "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito..."
+        </blockquote>
+        <blockquote>
+            Romanos 5:8 — "Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores [enemigos], Cristo murió por nosotros."
+        </blockquote>
+
+        <h2>4. Cómo usarla en una conversación (Ejemplo)</h2>
+        <div class="dialog">
+            <p><strong>Evangelista:</strong> Imagina que estás atrapado en un incendio y un bombero muere quemado para sacarte. Cuando sales y ves al padre de ese bombero llorando, ¿qué le dirías? ¿Le dirías "Ah, gracias, qué buen servicio"?</p>
+            <p><strong>Persona:</strong> No, claro que no. Estaría en deuda de por vida. Lloraría con él.</p>
+            <p><strong>Evangelista:</strong> Exacto. Sentirías una gratitud inmensa porque alguien dio su vida por la tuya. Eso es el Evangelio. Nosotros estábamos atrapados por el pecado (el incendio), y Dios (el Padre) envió a Jesús a morir en la cruz para "sacarnos".</p>
+            <p><strong>Evangelista:</strong> Él tomó tu lugar en el fuego del juicio. La pregunta es: Sabiendo que Él pagó ese precio tan alto por ti, ¿te gustaría conocerlo y darle gracias con tu vida hoy?</p>
+        </div>
+
+        <h2>Preguntas de reflexión para grupos pequeños</h2>
+        <ul style="padding-left: 20px; color: #444; margin-bottom: 30px;">
+            <li>¿Qué sentiste al imaginar al Padre teniendo que decidir entre salvar a los del edificio o a su propio Hijo?</li>
+            <li>¿Por qué a veces trivializamos o "nos acostumbramos" al sacrificio de Jesús en la cruz?</li>
+            <li>Si estuvieras en ese edificio y fueras salvado de esa manera, ¿cómo cambiaría tu forma de vivir el día a día?</li>
+        </ul>
+    </div>
+
+    <script>
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        const revealElements = document.querySelectorAll('h2, p, blockquote, .dialog');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => { el.classList.add('reveal'); revealObserver.observe(el); });
+    </script>
+</body>
+</html>

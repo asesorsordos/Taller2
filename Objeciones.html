@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respuestas a Objeciones - Capacitación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --highlight: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --text-dark: #333;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding-top: 110px;
+            padding-bottom: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+            background-color: #ecf0f1;
+            background-image: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--highlight), var(--accent), var(--primary));
+        }
+
+        nav {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.2rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background-color: rgba(44, 62, 80, 0.9);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        nav ul li a:hover {
+            background-color: var(--highlight);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        .intro {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .objecion-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-left: 5px solid var(--highlight);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+        .objecion-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        }
+        .objecion-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .objecion-title::before {
+            content: "🛑";
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .respuesta {
+            background-color: #f8fcfd;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+        }
+        .respuesta strong {
+            color: var(--accent);
+        }
+
+        .versiculo-ref {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 10px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index .html#dinamicas">⬅ Volver al Curso</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Objeciones Comunes y Respuestas</h1>
+        <div class="intro">
+            "Santificad a Dios el Señor en vuestros corazones, y estad siempre preparados para presentar defensa con mansedumbre y reverencia..." — <strong>1 Pedro 3:15</strong>
+        </div>
+
+        <!-- Objeción 1 -->
+        <div class="objecion-card reveal">
+            <div class="objecion-title">"Soy muy buena persona, no le hago mal a nadie"</div>
+            <div class="respuesta">
+                <p><strong>El diagnóstico:</strong> La persona se compara con criminales, no con la santidad de Dios. Cree que la salvación es por méritos.</p>
+                <p><strong>Cómo responder:</strong> Usa la Ley (Los 10 Mandamientos) como espejo. Pregunta con gentileza: "¿Alguna vez has mentido? (aunque sea pequeño). ¿Alguna vez has mirado con codicia?".</p>
+                <p>La Biblia dice que quien falla en un punto, es culpable de todos. Nadie es suficientemente bueno para entrar en el cielo perfecto de Dios por sí mismo.</p>
+                <span class="versiculo-ref">📖 Romanos 3:10-12 ("No hay justo..."), Santiago 2:10</span>
+            </div>
+        </div>
+
+        <!-- Objeción 2 -->
+        <div class="objecion-card reveal">
+            <div class="objecion-title">"Todas las religiones llevan a Dios / Cada uno tiene su verdad"</div>
+            <div class="respuesta">
+                <p><strong>El diagnóstico:</strong> Relativismo cultural. Cree que la sinceridad es suficiente.</p>
+                <p><strong>Cómo responder:</strong> "Imagina que quieres llamarme por teléfono. Si marcas un número diferente, aunque seas muy sincero, no te comunicarás conmigo. Dios ha establecido un 'número' específico para conectar con Él".</p>
+                <p>Jesús no dijo que era <em>una</em> opción, dijo ser <em>el</em> camino exclusivo. Las religiones dicen 'haz esto para subir', Jesús dice 'Yo bajé porque tú no podías subir'.</p>
+                <span class="versiculo-ref">📖 Juan 14:6, Hechos 4:12</span>
+            </div>
+        </div>
+
+        <!-- Objeción 3 -->
+        <div class="objecion-card reveal">
+            <div class="objecion-title">"Hay muchos hipócritas en la iglesia"</div>
+            <div class="respuesta">
+                <p><strong>El diagnóstico:</strong> Ha sido herido por personas religiosas o usa el mal ejemplo de otros como excusa.</p>
+                <p><strong>Cómo responder:</strong> "Tienes toda la razón, y eso me entristece también. Pero la iglesia no es un museo de santos, es un hospital para pecadores en recuperación. No mires a los pacientes, mira al Médico (Jesús). Él nunca fue hipócrita y Él es quien te invita".</p>
+                <p>Además, cada uno dará cuenta de sí mismo a Dios, no de los demás.</p>
+                <span class="versiculo-ref">📖 Romanos 14:12</span>
+            </div>
+        </div>
+
+        <!-- Objeción 4 -->
+        <div class="objecion-card reveal">
+            <div class="objecion-title">"Dios es amor, Él no enviaría a nadie al infierno"</div>
+            <div class="respuesta">
+                <p><strong>El diagnóstico:</strong> Tiene una visión incompleta del carácter de Dios (Amor sin Justicia).</p>
+                <p><strong>Cómo responder:</strong> "Dios es amor absoluto, pero también es Juez Justo. Imagina un juez humano que deja libre a un asesino porque 'es amoroso'; sería un juez corrupto, ¿verdad?".</p>
+                <p>El pecado es un crimen contra Dios. El infierno no es algo que Dios desea para nosotros (por eso envió a Jesús a pagar la fianza), es el lugar donde van quienes rechazan el pago del Juez.</p>
+                <span class="versiculo-ref">📖 Nahúm 1:3, Juan 3:18, 2 Pedro 3:9</span>
+            </div>
+        </div>
+
+        <!-- Objeción 5 -->
+        <div class="objecion-card reveal">
+            <div class="objecion-title">"No creo en la Biblia / Soy ateo"</div>
+            <div class="respuesta">
+                <p><strong>El diagnóstico:</strong> Escepticismo intelectual o rechazo moral a la autoridad de Dios.</p>
+                <p><strong>Cómo responder:</strong> No pelees. Apela a la creación y la conciencia.</p>
+                <p>"¿Ves este edificio? Sabes que hubo un arquitecto aunque no lo veas. El universo tiene un diseño mucho más complejo (ADN, galaxias), lo que apunta a un Diseñador".</p>
+                <p>O usa la <em>Apuesta de Pascal</em> (simplificada): "Si tienes razón y no hay Dios, al morir no perdemos nada. Pero si la Biblia tiene razón, al morir tú lo pierdes todo. ¿Vale la pena el riesgo?".</p>
+                <span class="versiculo-ref">📖 Salmos 19:1, Romanos 1:20</span>
+            </div>
+        </div>
+        
+        <!-- Objeción 6 -->
+        <div class="objecion-card reveal">
+            <div class="objecion-title">"Ya lo intenté antes y fallé / No puedo dejar mi pecado"</div>
+            <div class="respuesta">
+                <p><strong>El diagnóstico:</strong> Frustración, legalismo o ataduras fuertes. Cree que depende de su fuerza.</p>
+                <p><strong>Cómo responder:</strong> "Es normal que fallaras si intentaste luchar con tus fuerzas humanas. El cristianismo no es 'tratar de ser bueno', es morir para que Cristo viva en ti".</p>
+                <p>Cuando te entregas de verdad y te bautizas en Su nombre, Él te da el Espíritu Santo, que es el poder para vencer lo que tú no puedes vencer solo.</p>
+                <span class="versiculo-ref">📖 Filipenses 4:13, Hechos 1:8</span>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; color: #888; font-size: 0.9rem;">
+            <em>Recuerda: No ganamos argumentos, ganamos almas. Si la persona solo quiere discutir, bendícela y sigue adelante.</em>
+        </div>
+    </div>
+
+    <script>
+        // Animaciones simples
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Navbar efecto scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+    </script>
+</body>
+</html>
