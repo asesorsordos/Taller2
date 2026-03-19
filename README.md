@@ -1,2 +1,2 @@
-# Taller2
+# Taller 2
 Capacitación para Evangelistas - Fundamentos del Evangelismo
